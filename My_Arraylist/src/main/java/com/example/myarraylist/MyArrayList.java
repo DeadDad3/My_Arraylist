@@ -3,16 +3,28 @@ package main.java.com.example.myarraylist;
 import java.util.Arrays;
 import java.util.Comparator;
 
+/**
+ * Класс MyArrayList представляет собой реализацию динамического массива.
+ * Он позволяет хранить и управлять элементами любого типа данных.
+ */
 public class MyArrayList<E> {
     private static final int DEFAULT_CAPACITY = 10;
     private Object[] elements;
     private int size;
 
+    /**
+     * Создает экземпляр класса MyArrayList с начальной емкостью по умолчанию.
+     */
     public MyArrayList() {
         elements = new Object[DEFAULT_CAPACITY];
         size = 0;
     }
 
+    /**
+     * Добавляет элемент в конец списка.
+     *
+     * @param element элемент, который нужно добавить
+     */
     public void add(E element) {
         if (size == elements.length) {
             growCapacity();
@@ -21,6 +33,13 @@ public class MyArrayList<E> {
         size++;
     }
 
+    /**
+     * Добавляет элемент на указанную позицию в списке.
+     *
+     * @param index   индекс позиции, на которую нужно добавить элемент
+     * @param element элемент, который нужно добавить
+     * @throws IndexOutOfBoundsException если индекс выходит за пределы списка
+     */
     public void add(int index, E element) {
         if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException();
@@ -33,6 +52,13 @@ public class MyArrayList<E> {
         size++;
     }
 
+    /**
+     * Возвращает элемент на указанной позиции в списке.
+     *
+     * @param index индекс позиции элемента
+     * @return элемент на указанной позиции
+     * @throws IndexOutOfBoundsException если индекс выходит за пределы списка
+     */
     public E get(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException();
@@ -40,6 +66,12 @@ public class MyArrayList<E> {
         return (E) elements[index];
     }
 
+    /**
+     * Удаляет элемент на указанной позиции из списка.
+     *
+     * @param index индекс позиции элемента для удаления
+     * @throws IndexOutOfBoundsException если индекс выходит за пределы списка
+     */
     public void remove(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException();
@@ -49,6 +81,9 @@ public class MyArrayList<E> {
         size--;
     }
 
+    /**
+     * Очищает список, удаляя все элементы.
+     */
     public void clear() {
         for (int i = 0; i < size; i++) {
             elements[i] = null;
@@ -56,6 +91,11 @@ public class MyArrayList<E> {
         size = 0;
     }
 
+    /**
+     * Сортирует список с использованием алгоритма быстрой сортировки.
+     *
+     * @param comparator компаратор для сравнения элементов списка
+     */
     public void quicksort(Comparator<? super E> comparator) {
         quicksort(0, size - 1, comparator);
     }
@@ -81,16 +121,33 @@ public class MyArrayList<E> {
         return i + 1;
     }
 
+    /**
+     * Меняет местами элементы списка на указанных позициях.
+     *
+     * @param i индекс первого элемента
+     * @param j индекс второго элемента
+     */
     private void swap(int i, int j) {
         E temp = get(i);
         elements[i] = get(j);
         elements[j] = temp;
     }
 
+    /**
+     * Сортирует список с использованием указанного компаратора.
+     *
+     * @param comparator компаратор для сравнения элементов списка
+     */
     public void sort(Comparator<? super E> comparator) {
         Arrays.sort((E[]) elements, 0, size, comparator);
     }
 
+
+    /**
+     * Возвращает строковое представление списка.
+     *
+     * @return строковое представление списка
+     */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -105,6 +162,11 @@ public class MyArrayList<E> {
         return sb.toString();
     }
 
+    /**
+     * Возвращает количество элементов в списке.
+     *
+     * @return количество элементов в списке
+     */
     public int size() {
         return size;
     }

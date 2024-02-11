@@ -5,8 +5,14 @@ import org.junit.Test;
 import java.util.Comparator;
 import static org.junit.Assert.*;
 
+/**
+ * Класс MyArrayListTest содержит тесты для класса MyArrayList.
+ */
 public class MyArrayListTest {
 
+    /**
+     * Тест проверяет добавление элементов в список и получение их значения.
+     */
     @Test
     public void testAddAndGet() {
         MyArrayList<Integer> list = new MyArrayList<>();
@@ -18,6 +24,9 @@ public class MyArrayListTest {
         assertEquals(30, list.get(2).intValue());
     }
 
+    /**
+     * Тест проверяет очистку списка.
+     */
     @Test
     public void testClear() {
         MyArrayList<Integer> list = new MyArrayList<>();
@@ -28,6 +37,9 @@ public class MyArrayListTest {
         assertEquals(0, list.size());
     }
 
+    /**
+     * Тест проверяет сортировку списка.
+     */
     @Test
     public void testSort() {
         MyArrayList<Integer> list = new MyArrayList<>();
@@ -44,6 +56,9 @@ public class MyArrayListTest {
         assertEquals(50, list.get(4).intValue());
     }
 
+    /**
+     * Тест проверяет быструю сортировку списка.
+     */
     @Test
     public void testQuicksort() {
         MyArrayList<Integer> list = new MyArrayList<>();
@@ -60,6 +75,9 @@ public class MyArrayListTest {
         assertEquals(50, list.get(4).intValue());
     }
 
+    /**
+     * Тест проверяет удаление элемента из списка.
+     */
     @Test
     public void testRemove() {
         MyArrayList<Integer> list = new MyArrayList<>();
