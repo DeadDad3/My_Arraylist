@@ -1,3 +1,5 @@
+package main.java.com.example.myarraylist;
+
 import java.util.ArrayList;
 
 public class Main {

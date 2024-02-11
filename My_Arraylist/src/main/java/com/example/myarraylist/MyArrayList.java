@@ -1,3 +1,5 @@
+package main.java.com.example.myarraylist;
+
 import java.util.Arrays;
 import java.util.Comparator;
 
@@ -52,6 +54,37 @@ public class MyArrayList<E> {
             elements[i] = null;
         }
         size = 0;
+    }
+
+    public void quicksort(Comparator<? super E> comparator) {
+        quicksort(0, size - 1, comparator);
+    }
+
+    private void quicksort(int low, int high, Comparator<? super E> comparator) {
+        if (low < high) {
+            int pivotIndex = partition(low, high, comparator);
+            quicksort(low, pivotIndex - 1, comparator);
+            quicksort(pivotIndex + 1, high, comparator);
+        }
+    }
+
+    private int partition(int low, int high, Comparator<? super E> comparator) {
+        E pivot = get(high);
+        int i = low - 1;
+        for (int j = low; j < high; j++) {
+            if (comparator.compare(get(j), pivot) <= 0) {
+                i++;
+                swap(i, j);
+            }
+        }
+        swap(i + 1, high);
+        return i + 1;
+    }
+
+    private void swap(int i, int j) {
+        E temp = get(i);
+        elements[i] = get(j);
+        elements[j] = temp;
     }
 
     public void sort(Comparator<? super E> comparator) {
