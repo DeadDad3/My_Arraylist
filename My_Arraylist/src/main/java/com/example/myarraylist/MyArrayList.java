@@ -91,6 +91,20 @@ public class MyArrayList<E> {
         Arrays.sort((E[]) elements, 0, size, comparator);
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        for (int i = 0; i < size; i++) {
+            sb.append(elements[i]);
+            if (i < size - 1) {
+                sb.append(", ");
+            }
+        }
+        sb.append("]");
+        return sb.toString();
+    }
+
     public int size() {
         return size;
     }
