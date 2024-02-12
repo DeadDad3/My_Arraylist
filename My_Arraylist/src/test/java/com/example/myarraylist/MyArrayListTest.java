@@ -1,9 +1,11 @@
-package test.java.com.example.myarraylist;
+package com.example.myarraylist;
 
 import main.java.com.example.myarraylist.MyArrayList;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+
 import java.util.Comparator;
-import static org.junit.Assert.*;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Класс MyArrayListTest содержит тесты для класса MyArrayList.
